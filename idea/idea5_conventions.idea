@@ -1,0 +1,31 @@
+Markd in somehow should be possible to write *conventions*, i mean visual and singular conventions.
+
+like, `in this book will talk about Markd being a replacer for Markdown. This book uses the following conventions:
+  when i say marks am referring to Markd sintax
+` ok with this i could in Markd allow the writer to when he actually writes marks, the result be a visual representation of a reference like a link but more beatiful.
+Ex:
+  
+  in case marks are simply the markd that you write -> MrkSintax
+
+  [Trying Conventions]
+    use marks for MrkSintax
+
+    did you know that marks are the best way to write articles.
+  %
+
+  Ok, here `use` and `for` are keywords and if we look are actually the firsts keywords of Markd.
+
+  A few minutes of just thinking a bit, i realized that the way that am introducing `conventions` it's just like a variable or constant
+  so i'll keep in that way because i can't in Markd reference constants in text but know i need to have another sintax for it.
+
+  like:
+  
+    [Using conventions another sintax]
+      did you know that marks#{MrkSintax} are the best way to write articles.
+    %
+
+    in this exemple i don't use the keywords.
+
+    but you can notice that this is just one type of conventions. you can't predict conventions.
+
+:EndOfEx

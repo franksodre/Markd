@@ -1,0 +1,23 @@
+model template/from/file/templates/index.css
+
+from file* template/from/file/templates/index.css
+
+use flip, button, icon, color_x
+
+[#{Order}]
+  $flip::1#{Order}
+  $flip::2#{Chocalate, Milk Yogourt, More, Pizza, Yha "More" is actully a food.}
+
+  $button::1#{Live Your Life With Food.}
+  $button::color_x#{#122822}
+
+  @Like:$icon::1#{Like}
+%
+
+#[Flip]
+[#{Group}]
+
+
+
+$button::1#{if you liked please: }
+$button::2#{@@Like}

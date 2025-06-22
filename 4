@@ -1,0 +1,195 @@
+import { TokenType } from '../tokens/tokens.js'
+import * as Constants from './constants.js'
+
+function createToken(type, value) {
+  return { type, value };
+}
+
+export class Tokenizer {
+
+  constructor(src) {
+    this.src = src;
+    this.nextChar();
+
+    this.pos = 0;
+    this.nextPos = 0;
+    this.char = '';
+  }
+
+  make() {
+    this.skipWhitespace();
+
+    let tok = 0;
+    switch(this.char) {
+      case '-': 
+        if(this.peek() == '>') {
+          this.nextChar();
+          tok = createToken(TokenType.Assignment, '->');
+        } else {
+          tok = createToken(TokenType.Dash, this.char);
+        }
+        break;
+      case '>': 
+        tok = createToken(TokenType.GreaterThan, this.char);
+        break;
+      case '(': 
+        tok = createToken(TokenType.LParen, this.char);
+        break;
+      case ')': 
+        tok = createToken(TokenType.RParen, this.char);
+        break;
+      case '[': 
+        tok = createToken(TokenType.LBracket, this.char);
+        break;
+      case ']': 
+        tok = createToken(TokenType.RBracket, this.char);
+        break;
+      case '#':
+        tok = createToken(TokenType.HashTag, "HashTag");
+        break;
+      case '{':
+        console.log("How many times");
+        let literal = "";
+        tok = createToken(TokenType.OpenBrace, "OpenBrace");
+
+        while (this.peek() !== "}") {
+          literal += this.nextChar();
+          console.log(literal);
+        }
+
+        // tok = createToken(TokenType.Literal, literal);
+        break;
+      case '}':
+        tok = createToken(TokenType.CloseBrace, "CloseBrace");
+        break;
+      case '|': 
+        tok = createToken(TokenType.Pipe, this.char);
+        break;
+      case '\0':
+        tok = createToken(TokenType.Eof, "EOF");
+        break;
+      case '\n':
+        tok = createToken(TokenType.NewLine, "");
+
+        // unnecessary while. It could be an "if" statement ohh poor frank...
+        while (this.peek() === "\n") {
+          tok = createToken(TokenType.Terminator, "Terminator");
+          this.nextChar();
+        }
+
+        break;
+      default:
+        tok = createToken("Illegal", this.char);
+        break
+    }
+
+    /* this is a great way to grab keywords not arbitrary text.*/
+
+    if (Constants.isLetter(this.char)) {
+      let literal = this.char;
+
+      while(Constants.isLetter(this.peek()) || this.peek() === " " && Constants.isLetter(this.peek(2))) {
+        literal += this.peek();
+        this.nextChar();
+      }
+
+      tok = createToken(TokenType.Literal, literal);
+    }
+
+    this.nextChar();
+    return tok;
+
+  }
+
+   peek(lookahed = 1) {
+    if (this.nextPos >= this.src.length) {
+      return '\0';
+    } else if ((this.nextPos + (lookahed - 1)) >= this.src.length) {
+      return '\0';
+    } else {
+      return this.src[this.nextPos + (lookahed - 1)];
+    }
+  }
+
+   nextChar() {
+    if (this.nextPos >= this.src.length) {
+      this.char = "\0";
+    } else {
+      this.char = this.src[this.nextPos];
+    }
+
+    this.pos = this.nextPos;
+    this.nextPos += 1;
+  }
+
+   skipWhitespace() {
+    // || this.char === "\n"
+    while (this.char === " " || this.char === "\t" || this.char === "\r") {
+      this.nextChar();
+    }
+  }
+
+}
+
+// ctx | accept " "
+// const input = `
+// My Family Healthy -> B
+// My Day -> A
+// `;
+// const tokenizer = new Tokenizer(input);
+// while(true) {
+//   let tokens = tokenizer.make();
+//   console.log(tokens);
+//
+//   if(tokens.type === "EOF") {
+//     break;
+//   }
+// }
+
+
+
+
+
+
+          if (this.currentToken?.type === "LiteralEnd") break loop;
+          while (ctx === "in") {
+            if (this.currentToken?.type === "NewLine") break;
+
+            switch (this.currentToken?.type) {
+              case "Literal":
+                child.push({
+                  NodeType: 'ComposedText',
+                  children: [
+                    {
+                      NodeType: "Text",
+                      value: this.currentToken?.value
+                    }
+                  ]
+                });
+                break;
+              case "*":
+                child.push({
+                  NodeType: 'ComposedText',
+                  children: [this.Italic()]
+                });
+                break;
+              case "**":
+                child.push({
+                  NodeType: 'ComposedText',
+                  children: [this.Bold()]
+                });
+                break;
+              case "~":
+                child.push({
+                  NodeType: 'ComposedText',
+                  children: [this.LineThrough()]
+                });
+                break;
+            }
+
+            this.nextToken();
+          }
+
+
+
+

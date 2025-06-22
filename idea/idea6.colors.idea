@@ -1,0 +1,32 @@
+i thoughts for markds is to be a language that makes possible to me express
+everything that i want to express for exemple if a say red i want a red color being shown.
+
+[[[Header 3]]]
+  use %color_mark
+
+  the color blue is my favorite color.
+  the color #000 it's a good color.
+%
+
+in this exemple blue will be rendered like a badge but with the color blue.
+the color in hex will be colored too.
+all this is possible 'cause of the default type color_mark.
+to escape this use the escape (operator, key, command) "!" the pattern " " the space at the end is mandatory.
+
+[[Header 2]]
+  use %color_mark
+
+  i like so much the name !violet 
+  i even know if !violet is a color.
+%
+
+this is code.
+<
+  !i5[Header 5]
+
+  %
+
+  !i6[Header 5]
+
+  %
+>

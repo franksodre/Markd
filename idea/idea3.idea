@@ -1,0 +1,30 @@
+[Habits]
+  Home -> A
+  Bed -> B
+
+[Life]
+  Games -> G
+  Computers -> C
+
+#[Time::time]::MMDDYY
+  08:17:2025
+  08:17:2025
+
+#[Rating]
+#[Flags::colored]
+  (A) - Normal
+  (B) - Very Good
+
+  (G) - Good
+  (C) - Very Good
+
+#[Type::Icons]
+
+A group is a set of Text Elements referenced by a name that can contain `Markd` logic 
+ex: 
+[Habits]
+  Read
+
+An empty group is a set with no elemnts referenced by name.
+
+Note: add disjoint sets.

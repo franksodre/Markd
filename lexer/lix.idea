@@ -1,0 +1,2 @@
+// uma linguagem para calcular expressões booleanas.
+![(A * B + !B) <-> ((A + B) -> !A)]

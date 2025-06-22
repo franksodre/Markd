@@ -1,0 +1,36 @@
+[Habits]
+  Home -> A
+  Bed -> B
+
+[Life]
+  Games -> G
+  Computers -> C
+
+#[Time::time]::MMDDYY
+  08:17:2025
+  08:17:2025
+
+#[Rating]
+#[Flags::colored]::ORDER
+  (A) - Normal
+  (B) - Very Good
+
+  (G) - Good
+  (C) - Very Good
+
+#[Type::Icons]
+
+explanation:
+  - the names captalized between the curly brackets are the name of the columns.
+
+  - time is all lowercase because it's a default type.
+  - MMDDYY is the format applied in the column.
+  
+  - Rating is also a default type that have formats like ORDER.
+  - ORDER default format of Rating that rates based in order of (a ordem em que os valores aparecem).
+  - Rating is not lower case being a default type like time and colored because is called in a diffrent way, i way that allows bind types
+
+  - colored will apply a color to the values following some patter or directly.
+  - in this case the pattern is determined by Rating::ORDER.
+
+  - when we have something like Type::(some name) is a definition of a type just like the default Types.

@@ -1,0 +1,8 @@
+S -> DOC
+Group -> "[" Text "]" "\n" Assignment | PinFlag | Assignment & PinFlag
+Assignment -> Text "->" [A-Z_]
+PingFlag -> ReferenceVar "-" Value
+ReferenceVar -> ( [A-Z_] )
+Value -> Text | Text "|" Text
+ComposedText -> "#" "{" anyChar "}"
+Text -> [a-zA-Z_]
